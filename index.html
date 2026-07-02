@@ -10405,7 +10405,7 @@ function pnlGetVal(year, month, label) {
 
 function pnlIsFutureMonth(year, month) {
   if (year > TODAY_YEAR) return true;
-  if (year === TODAY_YEAR && month >= TODAY_MONTH) return true;
+  if (year === TODAY_YEAR && month > TODAY_MONTH) return true;
   return false;
 }
 
@@ -11363,7 +11363,7 @@ document.getElementById('ovAsOfDate').textContent = new Date().toLocaleDateStrin
     const curY = today.getFullYear();
     const _d2 = today.getDate();
     const curM = (today.getMonth()+1) - (_d2 <= 10 ? 2 : 1);
-    function isFutureM(y, m) { return (y > curY) || (y === curY && m >= curM); }
+    function isFutureM(y, m) { return (y > curY) || (y === curY && m > curM); }
     let lastY = null, lastM = null;
     (PNL.years||[]).forEach(y => {
       for (let m = 1; m <= 12; m++) {
@@ -11419,7 +11419,7 @@ const highlights = [];
   const currentMonth = (today.getMonth()+1) - (_d3 <= 10 ? 2 : 1);
   function isFutureMonth(y, m) {
     if (y > currentYear) return true;
-    if (y === currentYear && m >= currentMonth) return true;
+    if (y === currentYear && m > currentMonth) return true;
     return false;
   }
   const agg = {};
